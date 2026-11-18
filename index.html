@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>BREACH v0.8.0</title><style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#0b111b;color:white;font-family:system-ui;touch-action:none}canvas{display:block}#hud{position:fixed;top:14px;left:15px;font-weight:700;text-shadow:0 2px 4px #000;pointer-events:none}#hint{position:fixed;top:45px;left:15px;font-size:12px;color:#b9d3e8;pointer-events:none}#cross{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);font-size:24px;pointer-events:none}#pad{position:fixed;bottom:30px;left:25px;width:138px;height:138px;border:2px solid #ffffff55;border-radius:50%;background:#ffffff16;touch-action:none}#nub{position:absolute;left:49px;top:49px;width:40px;height:40px;border-radius:50%;background:#8cd4ff99}#look{position:fixed;right:15px;bottom:18px;width:42%;height:45%;border:1px solid #ffffff20;border-radius:16px;background:#ffffff08;touch-action:none}#looklabel{position:absolute;right:14px;bottom:10px;font-size:12px;color:#ffffff88;pointer-events:none}#combat{position:fixed;top:72px;left:15px;font-size:14px;line-height:1.65;text-shadow:0 2px 4px #000;pointer-events:none}#fire{position:fixed;right:28px;bottom:36px;width:88px;height:88px;border:2px solid #ffb8a4;border-radius:50%;background:#d84b4780;color:white;font-weight:800;font-size:18px;touch-action:none;z-index:5}#reload{position:fixed;right:132px;bottom:43px;padding:13px;border:1px solid #fff7;border-radius:12px;background:#243d56;color:white;z-index:5}#weapon{position:fixed;right:22px;bottom:208px;min-width:112px;min-height:52px;padding:12px 10px;border:2px solid #9cddff;border-radius:14px;background:#245674;color:white;font-size:13px;font-weight:700;touch-action:manipulation;z-index:12}#stun{position:fixed;right:28px;bottom:145px;padding:13px;border:1px solid #91f1ff;border-radius:12px;background:#165e73;color:white;z-index:8}#capture{position:fixed;right:155px;bottom:105px;padding:13px;border:1px solid #ffe7a0;border-radius:12px;background:#665327;color:white;z-index:8}#reset{position:fixed;left:50%;top:58%;transform:translate(-50%,-50%);padding:15px 28px;border:2px solid #fff;border-radius:12px;background:#25465b;color:white;display:none;z-index:10}#message{position:fixed;top:33%;left:50%;transform:translateX(-50%);font-weight:800;font-size:24px;color:#a8f5ff;text-shadow:0 2px 5px black;pointer-events:none}#status{position:fixed;top:14px;right:14px;font-size:12px;color:#a7c9d9}
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>BREACH v0.9.0</title><style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#0b111b;color:white;font-family:system-ui;touch-action:none}canvas{display:block}#hud{position:fixed;top:14px;left:15px;font-weight:700;text-shadow:0 2px 4px #000;pointer-events:none}#hint{position:fixed;top:45px;left:15px;font-size:12px;color:#b9d3e8;pointer-events:none}#cross{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);font-size:24px;pointer-events:none}#pad{position:fixed;bottom:30px;left:25px;width:138px;height:138px;border:2px solid #ffffff55;border-radius:50%;background:#ffffff16;touch-action:none}#nub{position:absolute;left:49px;top:49px;width:40px;height:40px;border-radius:50%;background:#8cd4ff99}#look{position:fixed;right:15px;bottom:18px;width:42%;height:45%;border:1px solid #ffffff20;border-radius:16px;background:#ffffff08;touch-action:none}#looklabel{position:absolute;right:14px;bottom:10px;font-size:12px;color:#ffffff88;pointer-events:none}#combat{position:fixed;top:72px;left:15px;font-size:14px;line-height:1.65;text-shadow:0 2px 4px #000;pointer-events:none}#fire{position:fixed;right:28px;bottom:36px;width:88px;height:88px;border:2px solid #ffb8a4;border-radius:50%;background:#d84b4780;color:white;font-weight:800;font-size:18px;touch-action:none;z-index:5}#reload{position:fixed;right:132px;bottom:43px;padding:13px;border:1px solid #fff7;border-radius:12px;background:#243d56;color:white;z-index:5}#weapon{position:fixed;right:22px;bottom:208px;min-width:112px;min-height:52px;padding:12px 10px;border:2px solid #9cddff;border-radius:14px;background:#245674;color:white;font-size:13px;font-weight:700;touch-action:manipulation;z-index:12}#stun{position:fixed;right:28px;bottom:145px;padding:13px;border:1px solid #91f1ff;border-radius:12px;background:#165e73;color:white;z-index:8}#capture{position:fixed;right:155px;bottom:105px;padding:13px;border:1px solid #ffe7a0;border-radius:12px;background:#665327;color:white;z-index:8}#reset{position:fixed;left:50%;top:58%;transform:translate(-50%,-50%);padding:15px 28px;border:2px solid #fff;border-radius:12px;background:#25465b;color:white;display:none;z-index:10}#message{position:fixed;top:33%;left:50%;transform:translateX(-50%);font-weight:800;font-size:24px;color:#a8f5ff;text-shadow:0 2px 5px black;pointer-events:none}#status{position:fixed;top:14px;right:14px;font-size:12px;color:#a7c9d9}
 /* Mobile-first two-thumb HUD. Controls never overlap on narrow screens. */
 :root{--safe-b:env(safe-area-inset-bottom,0px);--safe-r:env(safe-area-inset-right,0px);--safe-l:env(safe-area-inset-left,0px)}
 html,body{overscroll-behavior:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
@@ -48,7 +48,7 @@ button{font-family:inherit;-webkit-tap-highlight-color:transparent;cursor:pointe
 #cameraPanel button{margin-top:8px;background:#245d78;color:white;border:1px solid #82c7df;border-radius:8px;padding:8px 16px}
 @media(max-height:440px){#securityHud{top:85px;font-size:10px}#camButton{top:52px;padding:6px}#empButton{right:calc(118px + var(--safe-r));bottom:calc(138px + var(--safe-b));padding:7px;font-size:11px}}
 </style><style>
-/* v0.8.0: compact, non-overlapping phone landscape action cluster. FIRE remains large. */
+/* v0.9.0: compact, non-overlapping phone landscape action cluster. FIRE remains large. */
 @media (orientation:landscape) and (max-height:600px){
   #fire{right:calc(12px + var(--safe-r));bottom:calc(12px + var(--safe-b));width:88px;height:88px;padding:0;font-size:18px;z-index:24}
   #weapon,#reload,#stun,#capture,#interact,#empButton{
@@ -82,8 +82,14 @@ button{font-family:inherit;-webkit-tap-highlight-color:transparent;cursor:pointe
   #empButton{right:calc(216px + var(--safe-r));bottom:calc(52px + var(--safe-b))}
   #pad{width:90px;height:90px}
 }
-</style></head><body><div id="orientation">📱 スマホを横向きにしてプレイしてね</div><div id="hud">BREACH <span style="color:#67d7ff">v0.8.0</span></div><div id="hint">左：移動　右：視点　FIRE：射撃　STUN：電撃フィールド　／　PC：WASD・クリック・R</div><div id="status">TRAINING FACILITY</div><div id="cross">+</div><div id="combat"></div><div id="message"></div><button id="weapon">PISTOL ↔ SMG</button><button id="reload">RELOAD</button><button id="stun">STUN</button><button id="capture">CAPTURE</button><button id="fire">FIRE</button><button id="reset">RESTART</button><div id="pad"><div id="nub"></div></div><div id="look"><div id="looklabel">LOOK</div></div><div id="phaseHud">MISSION TRAINING</div><div id="objectiveHint"></div><div id="progressTrack"><div id="progressFill"></div></div><button id="interact">USE</button><button id="restartMission">MENU</button>
-<div id="securityHud">SECURITY: <span id="powerState">BACKUP</span><div id="securityAlert">警報：なし</div><div id="patrolState">巡回警備：待機</div></div><button id="camButton">CAMERAS</button><button id="empButton">EMP ×1</button><div id="cameraPanel"><b>SECURITY CAMERA MONITOR</b><p style="font-size:11px">訓練用マップ。青＝カメラ、赤＝巡回警備、緑＝自分</p><canvas id="cameraMap" width="400" height="300"></canvas><button id="camClose">閉じる</button></div><div id="missionPanel"><div id="missionCard"><h2>BREACH <span style="color:#67d7ff">v0.8.0</span></h2><p>潜入ミッション試作版。左親指で移動、右側で視点操作。USEを長押しして装置を操作しよう。</p><div id="missionOptions"><button data-m="data" class="selected">A データ奪取</button><button data-m="bomb">B 発電機破壊</button><button data-m="case">C ケース奪取</button><button data-m="hostage">D 人質救出</button></div><p>Stage 1: 広い屋外施設を抜けて正面ゲートを解除 → Stage 2: 選んだ任務を達成 → 脱出地点へ。3分ずつ。大型施設マップ・監視カメラ・巡回警備AI・EMPを搭載。オフライン訓練版（対人戦・捕虜救出は未実装）。</p><button class="mainAction" id="startGame">潜入開始</button></div></div><style>
+
+/* v0.9: tactile mobile jump key, isolated from FIRE and view pad. */
+#jump{position:fixed;right:calc(16px + var(--safe-r));bottom:calc(135px + var(--safe-b));width:68px;height:43px;z-index:28;background:#34516c;color:#f1faff;border:1px solid #9fcbdf;border-radius:11px;font:800 12px system-ui;touch-action:manipulation;box-shadow:0 2px 12px #0006}
+#jump:active{background:#4e8eac}
+@media (orientation:landscape) and (max-height:600px){#jump{right:calc(12px + var(--safe-r));bottom:calc(110px + var(--safe-b));width:88px;height:37px;font-size:11px}}
+@media (orientation:landscape) and (max-width:610px){#jump{right:calc(8px + var(--safe-r));bottom:calc(97px + var(--safe-b));width:78px;height:33px;font-size:10px}}
+</style></head><body><div id="orientation">📱 スマホを横向きにしてプレイしてね</div><div id="hud">BREACH <span style="color:#67d7ff">v0.9.0</span></div><div id="hint">左：移動　右：視点　FIRE：射撃　STUN：電撃フィールド　／　PC：WASD・クリック・R</div><div id="status">TRAINING FACILITY</div><div id="cross">+</div><div id="combat"></div><div id="message"></div><button id="weapon">PISTOL ↔ SMG</button><button id="reload">RELOAD</button><button id="stun">STUN</button><button id="capture">CAPTURE</button><button id="fire">FIRE</button><button id="jump" aria-label="ジャンプ">JUMP ↑</button><button id="reset">RESTART</button><div id="pad"><div id="nub"></div></div><div id="look"><div id="looklabel">LOOK</div></div><div id="phaseHud">MISSION TRAINING</div><div id="objectiveHint"></div><div id="progressTrack"><div id="progressFill"></div></div><button id="interact">USE</button><button id="restartMission">MENU</button>
+<div id="securityHud">SECURITY: <span id="powerState">BACKUP</span><div id="securityAlert">警報：なし</div><div id="patrolState">巡回警備：待機</div></div><button id="camButton">CAMERAS</button><button id="empButton">EMP ×1</button><div id="cameraPanel"><b>SECURITY CAMERA MONITOR</b><p style="font-size:11px">訓練用マップ。青＝カメラ、赤＝巡回警備、緑＝自分</p><canvas id="cameraMap" width="400" height="300"></canvas><button id="camClose">閉じる</button></div><div id="missionPanel"><div id="missionCard"><h2>BREACH <span style="color:#67d7ff">v0.9.0</span></h2><p>潜入ミッション試作版。左親指で移動、右側で視点操作。JUMPでジャンプ。USEを長押しして装置を操作しよう。</p><div id="missionOptions"><button data-m="data" class="selected">A データ奪取</button><button data-m="bomb">B 発電機破壊</button><button data-m="case">C ケース奪取</button><button data-m="hostage">D 人質救出</button></div><p>Stage 1: 広い屋外施設を抜けて正面ゲートを解除 → Stage 2: 選んだ任務を達成 → 脱出地点へ。3分ずつ。大型施設マップ・監視カメラ・巡回警備AI・EMPを搭載。オフライン訓練版（対人戦・捕虜救出は未実装）。</p><button class="mainAction" id="startGame">潜入開始</button></div></div><style>
 #netToggle{position:fixed;left:50%;top:8px;transform:translateX(-50%);z-index:31;background:#14627d;color:white;border:1px solid #8adfff;border-radius:9px;padding:7px 13px;font-weight:700}
 #netPanel{position:fixed;left:50%;top:45px;transform:translateX(-50%);z-index:40;width:min(360px,92vw);max-height:76vh;overflow:auto;padding:16px;background:#102336f5;border:1px solid #72d2ff;border-radius:14px;color:#fff;box-shadow:0 8px 40px #0009;display:none;font:14px system-ui}
 #netPanel input{width:100%;box-sizing:border-box;font-size:18px;margin:8px 0;padding:10px;background:#eaf5ff;color:#142b3d;border:0;border-radius:8px;text-transform:uppercase}
@@ -146,8 +152,59 @@ for(const x of [-13.5,13.5])for(const z of [-10,0,10]){const l=new THREE.PointLi
 // Outdoor landmarks and approach lane markers.
 roomSign('LOADING DOCK',-20,26);roomSign('VENT ACCESS',20,26);roomSign('CHECKPOINT',0,18);
 for(const x of [-6,6])for(const z of [30,35,40])block(x,.02,z,.13,.035,2,hazard,false);
+// v0.9: believable facility details. No new blocking walls on mission routes.
+const darkMetal=mat(0x253644), brushed=mat(0x82939c), safety=mat(0xd9a844), glassDark=new THREE.MeshStandardMaterial({color:0x487785,transparent:true,opacity:.35,roughness:.25,depthWrite:false}),glow=new THREE.MeshStandardMaterial({color:0x7ccce5,emissive:0x387e9b,emissiveIntensity:.7});
+// Yard security fences, checkpoint rails, pipework, and lamp posts.
+for(const side of [-1,1]){
+ for(const z of [18,24,30,36,42]){
+  block(side*28.2,1.5,z,.12,3,.12,brushed,false);
+  block(side*28.2,2.95,z+2.4,.09,.07,4.8,brushed,false);
+  block(side*28.2,1.35,z+2.4,.07,.07,4.8,brushed,false);
+ }
+ for(const z of [21,40]){
+   block(side*13,3,z,.18,6,.18,darkMetal,false);block(side*13,5.9,z,1,.15,.65,glow,false);
+ }
+}
+for(const x of [-12,12]){
+  // Roof ventilation and service ducts
+  for(const z of [-10,-3,4,10]){block(x,3.55,z,.5,.35,2.6,darkMetal,false);block(x,3.32,z,.55,.09,2.6,brushed,false)}
+}
+// Lab partition window panels, warning stripes, floor-grilles.
+for(const x of [-5.6,5.6])for(const z of [-10,-7,5,9]){
+ block(x,2.1,z,.09,1.15,1.45,glassDark,false);
+ block(x,2.72,z,.13,.07,1.6,brushed,false);
+}
+for(const z of [-11,-4,3,10])for(const x of [-8,8]){
+ block(x,.023,z,2.4,.045,.5,darkMetal,false);
+ for(let t=-.9;t<=.9;t+=.3)block(x+t,.053,z,.05,.012,.48,brushed,false);
+}
+for(const x of [-10.4,10.4]){
+ block(x,3.75,-2,.25,.22,18,darkMetal,false);
+ for(const z of [-9,-3,3])block(x,3.72,z,.7,.09,.13,safety,false);
+}
+// Details above eye-level and environmental ambience without costly shadow maps.
+const softFill=new THREE.PointLight(0xbad5e8,.45,18);softFill.position.set(0,3.4,2);scene.add(softFill);
 // Training dummies: raycastable and destructible, respawn after a short delay.
-function spawnTarget(x,z){const group=new THREE.Group();group.position.set(x,0,z);scene.add(group);const torso=new THREE.Mesh(new THREE.BoxGeometry(.85,1.35,.45),targetMaterial());torso.position.y=1.45;group.add(torso);const head=new THREE.Mesh(new THREE.SphereGeometry(.31,12,10),targetMaterial());head.position.y=2.4;group.add(head);const base=new THREE.Mesh(new THREE.CylinderGeometry(.48,.48,.14,12),mat(0x627889));base.position.y=.12;group.add(base);const t={group,parts:[torso,head],hp:100,alive:true,respawn:0,stun:0,downUntil:0,captured:false};for(const part of t.parts)part.userData.target=t;targets.push(t)}
+function spawnTarget(x,z){
+ const group=new THREE.Group();group.position.set(x,0,z);scene.add(group);
+ const uniform=mat(0x4b5967),fabric=mat(0x344351),armor=mat(0x697b87),skin=mat(0xc59477),visor=mat(0x161f2a),boot=mat(0x222a31);
+ function part(geom,material,px,py,pz,hit=false){const o=new THREE.Mesh(geom,material);o.position.set(px,py,pz);group.add(o);if(hit)parts.push(o);return o}
+ const parts=[];
+ const torso=part(new THREE.BoxGeometry(.66,.83,.38),uniform,0,1.52,0,true);
+ part(new THREE.BoxGeometry(.54,.53,.45),armor,0,1.54,.12,true);
+ const head=part(new THREE.SphereGeometry(.245,12,10),skin,0,2.23,0,true);
+ part(new THREE.BoxGeometry(.49,.23,.35),armor,0,2.40,-.02,true);
+ part(new THREE.BoxGeometry(.39,.12,.1),visor,0,2.25,.205,true);
+ for(const side of [-1,1]){
+  part(new THREE.CapsuleGeometry(.12,.46,3,6),uniform,side*.46,1.47,0,true);
+  part(new THREE.CapsuleGeometry(.135,.60,3,6),fabric,side*.19,.61,0,true);
+  part(new THREE.BoxGeometry(.28,.18,.43),boot,side*.19,.13,.1,true);
+ }
+ part(new THREE.BoxGeometry(.35,.22,.2),armor,0,1.05,0,true);
+ const t={group,parts,hp:100,alive:true,respawn:0,stun:0,downUntil:0,captured:false};
+ for(const mesh of parts)mesh.userData.target=t;
+ targets.push(t);
+}
 spawnTarget(0,-4);spawnTarget(-10,4);spawnTarget(10,-5);spawnTarget(-21,35);spawnTarget(21,35);
 const raycaster=new THREE.Raycaster(), center=new THREE.Vector2(0,0);
 const guns=[{name:'PISTOL',damage:34,mag:12,reserve:72,rate:.24,reload:1.35},{name:'SMG',damage:14,mag:30,reserve:180,rate:.09,reload:1.8}];let gunIndex=0;const ammo=[12,30],reserve=[72,180];let enemyAttackEnabled=false;let hp=100,kills=0,captures=0,dead=false,reloadUntil=0,nextShot=0,shootHeld=false,flashUntil=0,hitUntil=0,noticeUntil=0;
@@ -171,6 +228,15 @@ function addCamera(x,z,angle,backup){
 addCamera(-12,10,-.6,true);addCamera(12,-9,2.2,true);addCamera(0,-11,0,false);addCamera(11,10,-2.4,false);addCamera(-22,32,0,true);addCamera(22,32,0,false);
 const powerConsole=block(12,.9,1,.85,1.8,.6,mat(0xf0b754),false);
 const guardBody=new THREE.Group();scene.add(guardBody);const guardTorso=new THREE.Mesh(new THREE.BoxGeometry(.65,1.15,.55),mat(0xd8544e));guardTorso.position.y=1.3;guardBody.add(guardTorso);const guardHead=new THREE.Mesh(new THREE.SphereGeometry(.27,12,8),mat(0xf1bf9e));guardHead.position.y=2.06;guardBody.add(guardHead);
+// Tactical uniform silhouette for the patrol guard.
+guardTorso.material=mat(0x3e5261);guardHead.material=mat(0xbf967c);
+const guardVest=new THREE.Mesh(new THREE.BoxGeometry(.73,.72,.62),mat(0x657681));guardVest.position.set(0,1.38,.08);guardBody.add(guardVest);
+for(const side of [-1,1]){
+ const arm=new THREE.Mesh(new THREE.CapsuleGeometry(.115,.57,3,6),mat(0x3d4c59));arm.position.set(side*.48,1.36,0);guardBody.add(arm);
+ const leg=new THREE.Mesh(new THREE.CapsuleGeometry(.135,.68,3,6),mat(0x263541));leg.position.set(side*.19,.47,0);guardBody.add(leg);
+}
+const guardHelmet=new THREE.Mesh(new THREE.BoxGeometry(.53,.2,.45),mat(0x26333c));guardHelmet.position.set(0,2.24,0);guardBody.add(guardHelmet);
+const guardVisor=new THREE.Mesh(new THREE.BoxGeometry(.38,.1,.07),mat(0x111b26));guardVisor.position.set(0,2.075,.255);guardBody.add(guardVisor);
 const guardRoute=[[10,-10],[10,-3],[10,5],[11,10],[8,10],[8,2]];let guardWaypoint=0,guardDetect=0,guardLastShot=0;
 function securityReset(){mainPower=false;empCount=1;empUntil=0;lastPing=performance.now();lastCameraAlert=0;alertUntil=0;alertText='警報：なし';guardWaypoint=0;guardDetect=0;guardLastShot=0;guardBody.position.set(10,0,-10);camOpen=false;camPanel.style.display='none';document.getElementById('empButton').textContent='EMP ×1'}
 function showSecurityAlert(text,now){alertText=text;alertUntil=now+4300;securityAlert.textContent=text;securityAlert.style.color='#ffb55f'}
@@ -219,12 +285,12 @@ const exitA=block(-11,.12,11,2,.25,2,mat(0x45c97e),false),exitB=block(11,.12,11,
 const escort=new THREE.Mesh(new THREE.CapsuleGeometry(.34,.8,4,8),mat(0xf1d39a));escort.position.set(0,1,-2);scene.add(escort);escort.visible=false;
 function showMenu(){phase=0;useHeld=false;shootHeld=false;document.getElementById('missionPanel').style.display='flex';phaseHud.textContent='MISSION TRAINING';objectiveHint.textContent='任務を選んで開始';}
 document.querySelectorAll('[data-m]').forEach(b=>b.addEventListener('click',()=>{selectedMission=b.dataset.m;document.querySelectorAll('[data-m]').forEach(x=>x.classList.toggle('selected',x===b))}));
-function startMission(){restart();securityReset();phase=1;phaseEnds=performance.now()+180000;missionDone=missionWon=missionFailed=false;objectiveStarted=false;bombEnd=0;carrying=npcFollowing=false;useProgress=0;useKey='';camera.position.set(0,1.65,43);escort.visible=false;document.getElementById('missionPanel').style.display='none';notice('STAGE 1 — ゲートを解除せよ');}
+function startMission(){restart();securityReset();phase=1;phaseEnds=performance.now()+180000;missionDone=missionWon=missionFailed=false;objectiveStarted=false;bombEnd=0;carrying=npcFollowing=false;useProgress=0;useKey='';camera.position.set(0,1.65,43);resetJump();escort.visible=false;document.getElementById('missionPanel').style.display='none';notice('STAGE 1 — ゲートを解除せよ');}
 document.getElementById('startGame').addEventListener('click',startMission);
 document.getElementById('restartMission').addEventListener('click',showMenu);
 const useButton=document.getElementById('interact');useButton.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();useHeld=true;useButton.setPointerCapture(e.pointerId)});useButton.addEventListener('pointerup',()=>{useHeld=false;useProgress=0});useButton.addEventListener('pointercancel',()=>{useHeld=false;useProgress=0});
 function closeTo(x,z,r=2.5){return Math.hypot(camera.position.x-x,camera.position.z-z)<r}
-function stageTwo(){phase=2;phaseEnds=performance.now()+180000;useProgress=0;useKey='';camera.position.set(0,1.65,1.8);notice('STAGE 2 — '+missionNames[selectedMission]);}
+function stageTwo(){phase=2;phaseEnds=performance.now()+180000;useProgress=0;useKey='';camera.position.set(0,1.65,1.8);resetJump();notice('STAGE 2 — '+missionNames[selectedMission]);}
 function finishMission(success,reason){phase=3;missionWon=success;missionFailed=!success;useHeld=false;useProgress=0;notice(success?'MISSION COMPLETE!':'MISSION FAILED');objectiveHint.textContent=reason+'　MENUから再挑戦';}
 function interactTick(now,dt){if(!phase||phase===3)return;
  if(now>=phaseEnds){finishMission(false,'制限時間切れ');return}
@@ -254,7 +320,7 @@ function changeGun(){if(dead)return;gunIndex=(gunIndex+1)%guns.length;reloadUnti
 function shoot(now){if(!phase||phase===3||dead||reloadUntil||now<nextShot)return;const g=guns[gunIndex];if(ammo[gunIndex]<=0){reload();return}ammo[gunIndex]--;nextShot=now+g.rate*1000;raycaster.setFromCamera(center,camera);raycaster.far=35;const meshes=targets.filter(t=>t.alive&&!t.downUntil).flatMap(t=>t.parts);const hits=raycaster.intersectObjects(meshes,false);if(netConnected&&netAvatar.visible){const hitRemote=raycaster.intersectObjects(netAvatar.children,true)[0];if(hitRemote&&hitRemote.distance<35&&(!hits.length||hitRemote.distance<hits[0].distance)){netSend({type:'shot',damage:g.damage});notice('OPPONENT HIT');return;}}if(hits.length){const t=hits[0].object.userData.target;t.hp-=g.damage;hitUntil=now+130;notice('HIT '+Math.max(0,t.hp)+' HP');if(t.hp<=0){t.alive=false;t.group.visible=false;t.respawn=now+4500;kills++;notice('TARGET DOWN!')}}}
 fire.addEventListener('pointerdown',e=>{e.preventDefault();fire.setPointerCapture(e.pointerId);shootHeld=true;shoot(performance.now())});const stopFire=()=>shootHeld=false;fire.addEventListener('pointerup',stopFire);fire.addEventListener('pointercancel',stopFire);
 document.getElementById('reload').addEventListener('click',reload);document.getElementById('weapon').addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();changeGun()});document.getElementById('weapon').addEventListener('click',e=>{if(e.detail===0)changeGun()});
-function restart(){hp=100;kills=0;captures=0;dead=false;stunReady=0;stunFields.length=0;captureTarget=null;ammo[0]=12;ammo[1]=30;reserve[0]=72;reserve[1]=180;reloadUntil=0;gunIndex=0;camera.position.set(0,1.65,7);yaw=pitch=0;document.getElementById('reset').style.display='none';for(const t of targets){t.hp=100;t.alive=true;t.group.visible=true;t.respawn=0;t.stun=0;t.downUntil=0;t.captured=false;t.parts.forEach(p=>p.material.color.setHex(0xe55a58))}notice('TRAINING START')}
+function restart(){hp=100;kills=0;captures=0;dead=false;stunReady=0;stunFields.length=0;captureTarget=null;ammo[0]=12;ammo[1]=30;reserve[0]=72;reserve[1]=180;reloadUntil=0;gunIndex=0;camera.position.set(0,1.65,7);resetJump();yaw=pitch=0;document.getElementById('reset').style.display='none';for(const t of targets){t.hp=100;t.alive=true;t.group.visible=true;t.respawn=0;t.stun=0;t.downUntil=0;t.captured=false;t.parts.forEach(p=>{if(p.material.emissive)p.material.emissive.setHex(0)})}notice('TRAINING START')}
 document.getElementById('reset').addEventListener('click',restart);
 // Training simulation: a floor device emits a 2m field for 5s; 3s exposure downs a dummy for 8s.
 let stunReady=0,captureTarget=null,captureStart=0;const stunFields=[];
@@ -263,6 +329,13 @@ function nearDown(){return targets.find(t=>t.downUntil&&performance.now()<t.down
 function beginCapture(e){e.preventDefault();e.stopPropagation();if(dead)return;const t=nearDown();if(!t){notice('GET CLOSE TO DOWNED TARGET');return}captureTarget=t;captureStart=performance.now();notice('RESTRAINING...')}
 function endCapture(){captureTarget=null}
 const stunBtn=document.getElementById('stun'),captureBtn=document.getElementById('capture');stunBtn.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();stunShot()});captureBtn.addEventListener('pointerdown',beginCapture);captureBtn.addEventListener('pointerup',endCapture);captureBtn.addEventListener('pointercancel',endCapture);
+// v0.9: grounded, frame-rate independent jump (no double jump).
+const EYE_HEIGHT=1.65;let verticalVelocity=0;let grounded=true;
+function doJump(){if(dead||phase===0||phase===3||!grounded)return;verticalVelocity=5.9;grounded=false;}
+const jumpButton=document.getElementById('jump');
+jumpButton.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();doJump()});
+addEventListener('keydown',e=>{if(e.code==='Space'&&!e.repeat){e.preventDefault();doJump()}});
+function resetJump(){verticalVelocity=0;grounded=true;camera.position.y=EYE_HEIGHT}
 let lastAttack=performance.now();
 let yaw=0,pitch=0;const keys={};addEventListener('keydown',e=>{keys[e.key.toLowerCase()]=true;if(e.key.toLowerCase()==='r')reload();if(e.key.toLowerCase()==='q')stunShot();if(e.key.toLowerCase()==='e'&&!e.repeat)useHeld=true;if(e.key.toLowerCase()==='c'&&!e.repeat)beginCapture(e);if(e.key==='1')gunIndex=0;if(e.key==='2')gunIndex=1;if(e.code==='Space'){e.preventDefault();shootHeld=true}});addEventListener('keyup',e=>{keys[e.key.toLowerCase()]=false;if(e.code==='Space')shootHeld=false;if(e.key.toLowerCase()==='e'){useHeld=false;useProgress=0}if(e.key.toLowerCase()==='c')endCapture()});
 const pad=document.getElementById('pad'),nub=document.getElementById('nub');let joyX=0,joyY=0,pid=null;function movePad(e){const r=pad.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2,dx=e.clientX-cx,dy=e.clientY-cy,len=Math.max(1,Math.hypot(dx,dy)),radius=Math.max(28,(r.width-40)/2),scale=Math.min(radius,len)/len;joyX=dx*scale/radius;joyY=dy*scale/radius;nub.style.transform=`translate(calc(-50% + ${joyX*radius}px),calc(-50% + ${joyY*radius}px))`}pad.addEventListener('pointerdown',e=>{e.preventDefault();pid=e.pointerId;pad.setPointerCapture(pid);movePad(e)});pad.addEventListener('pointermove',e=>{if(e.pointerId===pid)movePad(e)});function stop(e){if(e.pointerId!==pid)return;pid=null;joyX=joyY=0;nub.style.transform='translate(-50%,-50%)'}pad.addEventListener('pointerup',stop);pad.addEventListener('pointercancel',stop);
@@ -271,7 +344,10 @@ let mouse=false;renderer.domElement.addEventListener('pointerdown',e=>{mouse=tru
 function blocked(x,z){if(Math.abs(x)>28.5||z< -14.5||z>47.5)return true;return solids.some(b=>Math.abs(x-b.x)<b.w/2+.35&&Math.abs(z-b.z)<b.d/2+.35)}let prev=performance.now();// v0.6 experimental PeerJS WebRTC networking. Signaling uses a public third-party service.
 let netPeer=null,netConn=null,netConnected=false,netHost=false,netRole='infiltrator',netRound=0,netLastSend=0,netRemoteHP=100,netLocalHP=100;
 const netPanel=document.getElementById('netPanel'),netState=document.getElementById('netState'),netHud=document.getElementById('netHud');
-const netAvatar=new THREE.Group();const netBody=new THREE.Mesh(new THREE.CapsuleGeometry(.38,1.15,4,8),new THREE.MeshStandardMaterial({color:0x4bd7ff}));netBody.position.y=0;netAvatar.add(netBody);scene.add(netAvatar);netAvatar.visible=false;
+const netAvatar=new THREE.Group();const netBody=new THREE.Mesh(new THREE.CapsuleGeometry(.38,1.15,4,8),new THREE.MeshStandardMaterial({color:0x4bd7ff}));netBody.position.y=0;netAvatar.add(netBody);scene.add(netAvatar);const avatarArmor=mat(0x4aa7c1),avatarDark=mat(0x293c4d);
+const avatarHead=new THREE.Mesh(new THREE.SphereGeometry(.24,10,8),avatarArmor);avatarHead.position.y=.94;netAvatar.add(avatarHead);
+for(const side of [-1,1]){const a=new THREE.Mesh(new THREE.CapsuleGeometry(.11,.5,3,6),avatarArmor);a.position.set(side*.4,.13,0);netAvatar.add(a);const l=new THREE.Mesh(new THREE.CapsuleGeometry(.12,.58,3,6),avatarDark);l.position.set(side*.17,-.74,0);netAvatar.add(l)}
+netAvatar.visible=false;
 function netStatus(t){netState.textContent=t;netHud.textContent=netConnected?('ROUND '+netRound+' | '+netRole.toUpperCase()+' | HP '+netLocalHP+' | '+t):t;}
 function netSend(o){if(netConn&&netConn.open)try{netConn.send(o)}catch(e){netStatus('送信エラー: '+e.message)}}
 function netPeerInit(id){if(typeof window.Peer!=='function'){netStatus('通信ライブラリが読み込めません。ネット接続を確認');return null;}try{return new window.Peer(id,{debug:0})}catch(e){netStatus('初期化エラー: '+e.message);return null}}
@@ -286,10 +362,10 @@ function tick(now){requestAnimationFrame(tick);if(netConnected&&netRound&&now-ne
 if(reloadUntil&&now>=reloadUntil){const n=Math.min(guns[gunIndex].mag-ammo[gunIndex],reserve[gunIndex]);ammo[gunIndex]+=n;reserve[gunIndex]-=n;reloadUntil=0}
 if(shootHeld)shoot(now);
 for(let i=stunFields.length-1;i>=0;i--){if(now>=stunFields[i].end){scene.remove(stunFields[i].mesh);stunFields[i].mesh.geometry.dispose();stunFields[i].mesh.material.dispose();stunFields.splice(i,1)}}
-for(const t of targets){if(!t.alive&&now>=t.respawn){t.alive=true;t.hp=100;t.group.visible=true;t.captured=false;t.downUntil=0;t.stun=0;t.parts.forEach(p=>p.material.color.setHex(0xe55a58))}
-if(!t.alive)continue;if(t.downUntil){if(now>=t.downUntil){t.downUntil=0;t.stun=0;t.parts.forEach(p=>p.material.color.setHex(0xe55a58));notice('TARGET RECOVERED')}continue}
+for(const t of targets){if(!t.alive&&now>=t.respawn){t.alive=true;t.hp=100;t.group.visible=true;t.captured=false;t.downUntil=0;t.stun=0;t.parts.forEach(p=>{if(p.material.emissive)p.material.emissive.setHex(0)})}
+if(!t.alive)continue;if(t.downUntil){if(now>=t.downUntil){t.downUntil=0;t.stun=0;t.parts.forEach(p=>{if(p.material.emissive)p.material.emissive.setHex(0)});notice('TARGET RECOVERED')}continue}
 const exposed=stunFields.some(f=>Math.hypot(f.x-t.group.position.x,f.z-t.group.position.z)<=2);t.stun=exposed?t.stun+dt:Math.max(0,t.stun-dt);if(t.stun>=3){t.downUntil=now+8000;t.stun=0;t.parts.forEach(p=>p.material.color.setHex(0x55caff));notice('TARGET DOWN — CAPTURE NOW')}}
 if(captureTarget){if(dead||!captureTarget.downUntil||now>=captureTarget.downUntil||Math.hypot(camera.position.x-captureTarget.group.position.x,camera.position.z-captureTarget.group.position.z)>2.5){captureTarget=null}else if(now-captureStart>=3000){const t=captureTarget;captureTarget=null;t.alive=false;t.captured=true;t.group.visible=false;t.respawn=now+5500;captures++;notice('CAPTURE SUCCESS!')}}
 if(phase>0&&phase<3&&enemyAttackEnabled&&!dead&&now-lastAttack>2200){lastAttack=now;const close=targets.some(t=>t.alive&&camera.position.distanceTo(new THREE.Vector3(t.group.position.x,1.65,t.group.position.z))<13);if(close){hp=Math.max(0,hp-8);if(hp===0){dead=true;shootHeld=false;document.getElementById('reset').style.display='block';notice('TRAINING FAILED')}}}
-cameraTick(now,dt);drawCameraMap();interactTick(now,dt);if(now>noticeUntil)message.textContent='';updateHud();const forward=(dead||phase===0||phase===3)?0:((keys.w||keys.arrowup?1:0)-(keys.s||keys.arrowdown?1:0)-joyY);const strafe=(dead||phase===0||phase===3)?0:((keys.d||keys.arrowright?1:0)-(keys.a||keys.arrowleft?1:0)+joyX);const norm=Math.max(1,Math.hypot(forward,strafe)),f=forward/norm,s=strafe/norm,spd=4.3*dt;const dx=(-Math.sin(yaw)*f+Math.cos(yaw)*s)*spd,dz=(-Math.cos(yaw)*f-Math.sin(yaw)*s)*spd;const nx=camera.position.x+dx,nz=camera.position.z+dz;if(!blocked(nx,camera.position.z))camera.position.x=nx;if(!blocked(camera.position.x,nz))camera.position.z=nz;camera.rotation.order='YXZ';camera.rotation.y=yaw;camera.rotation.x=pitch;renderer.render(scene,camera)}requestAnimationFrame(tick);addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)});
+cameraTick(now,dt);drawCameraMap();interactTick(now,dt);if(now>noticeUntil)message.textContent='';updateHud();const forward=(dead||phase===0||phase===3)?0:((keys.w||keys.arrowup?1:0)-(keys.s||keys.arrowdown?1:0)-joyY);const strafe=(dead||phase===0||phase===3)?0:((keys.d||keys.arrowright?1:0)-(keys.a||keys.arrowleft?1:0)+joyX);const norm=Math.max(1,Math.hypot(forward,strafe)),f=forward/norm,s=strafe/norm,spd=4.3*dt;const dx=(-Math.sin(yaw)*f+Math.cos(yaw)*s)*spd,dz=(-Math.cos(yaw)*f-Math.sin(yaw)*s)*spd;const nx=camera.position.x+dx,nz=camera.position.z+dz;if(!blocked(nx,camera.position.z))camera.position.x=nx;if(!blocked(camera.position.x,nz))camera.position.z=nz;if(!grounded){verticalVelocity-=15.5*dt;camera.position.y+=verticalVelocity*dt;if(camera.position.y<=EYE_HEIGHT){camera.position.y=EYE_HEIGHT;verticalVelocity=0;grounded=true}}camera.rotation.order='YXZ';camera.rotation.y=yaw;camera.rotation.x=pitch;renderer.render(scene,camera)}requestAnimationFrame(tick);addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)});
 </script></body></html>
